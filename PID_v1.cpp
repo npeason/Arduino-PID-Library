@@ -17,8 +17,9 @@
  *    The parameters specified here are those for for which we can't set up
  *    reliable defaults, so we need to have the user set them.
  ***************************************************************************/
-PID::PID(double* Input, double* Output, double* Setpoint,
-        double Kp, double Ki, double Kd, int POn, int ControllerDirection)
+
+void PID::pid(double* Input, double* Output, double* Setpoint,
+   double Kp, double Ki, double Kd, int POn, int ControllerDirection)
 {
     myOutput = Output;
     myInput = Input;
@@ -41,12 +42,13 @@ PID::PID(double* Input, double* Output, double* Setpoint,
  *    to use Proportional on Error without explicitly saying so
  ***************************************************************************/
 
-PID::PID(double* Input, double* Output, double* Setpoint,
+void PID::pid(double* Input, double* Output, double* Setpoint,
         double Kp, double Ki, double Kd, int ControllerDirection)
-    :PID::PID(Input, Output, Setpoint, Kp, Ki, Kd, P_ON_E, ControllerDirection)
+    
 {
-
+   PID::pid(Input, Output, Setpoint, Kp, Ki, Kd, P_ON_E, ControllerDirection);
 }
+
 
 
 /* Compute() **********************************************************************
